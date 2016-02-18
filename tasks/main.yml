@@ -43,3 +43,12 @@
     - spark_configure
     - spark
     - configure
+
+- name: add to profile.d
+  lineinfile:
+    dest: "/etc/profile.d/spark.sh"
+    line: "export {{ item }}"
+    create: yes
+  with_items:
+    - SPARK_HOME={{ spark_install_dest }}/{{ spark_link_name }}
+    - PATH=$PATH:$SPARK_HOME/bin
