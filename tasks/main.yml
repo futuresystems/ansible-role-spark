@@ -11,8 +11,10 @@
     - install
 
 - name: extract
-  command: tar xf "{{ _spark_package_name }}" -C "{{ spark_install_dest }}"
-  args:
+  unarchive:
+    dest: "{{ spark_install_dest }}"
+    src: "{{ ansible_env.PWD }}/{{ _spark_package_name }}"
+    copy: no
     creates: "{{ spark_install_dest }}/{{ _spark_directory }}"
   tags:
     - spark_install
@@ -43,3 +45,12 @@
     - spark_configure
     - spark
     - configure
+
+- name: add to profile.d
+  lineinfile:
+    dest: "/etc/profile.d/spark.sh"
+    line: "export {{ item }}"
+    create: yes
+  with_items:
+    - SPARK_HOME={{ spark_install_dest }}/{{ spark_link_name }}
+    - PATH=$PATH:$SPARK_HOME/bin
