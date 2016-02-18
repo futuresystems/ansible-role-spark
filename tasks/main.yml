@@ -54,3 +54,9 @@
   with_items:
     - SPARK_HOME={{ spark_install_dest }}/{{ spark_link_name }}
     - PATH=$PATH:$SPARK_HOME/bin
+  tags:
+    - spark
+    - spark_install
+    - spark_profile_d
+    - install
+    - profile_d
