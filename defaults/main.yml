@@ -1,6 +1,6 @@
 ---
 
-spark_version: 1.5.1
+spark_version: 1.6.0
 spark_package_type: src
 spark_hadoop_profile: hadoop-2.2
 spark_url: "{{ _spark_url[spark_package_type][spark_version] }}"
@@ -41,12 +41,14 @@ _spark_directory: "{{ _spark_package_name.rstrip('.tgz') }}"
 
 _spark_sha256:
   src:
+    1.6.0: 8a0a22cd126bdbc7fd90f20eb7a3b0508e726c062b31d901a6bf96646376830a
     1.5.1: 96cfd31ab5c07fe40dfca0475c7df888e2abf15126ff2a3c3af1facd02f1a848
     1.3.1: aea2384ec5694220d373b64f42d21b34e0df5aa50d15b1b6f6ce5edb5c4b4466
 
 
 _spark_url:
   src:
+    1.6.0: http://d3kbcqa49mib13.cloudfront.net/spark-1.6.0.tgz
     1.5.1: http://d3kbcqa49mib13.cloudfront.net/spark-1.5.1.tgz
     1.3.1: http://d3kbcqa49mib13.cloudfront.net/spark-1.3.1.tgz
 
