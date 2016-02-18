@@ -34,7 +34,6 @@ _spark_build_mvn_opts_list:
 _spark_build_mvn_opts: "{{ _spark_build_mvn_opts_list | join(' ') }}"
 
 
-_spark_sha256: "{{ _spark_sha256[spark_package_type][spark_version] }}"
 _spark_package_name: "{{ spark_url | basename }}"
 _spark_directory: "{{ _spark_package_name.rstrip('.tgz') }}"
 
