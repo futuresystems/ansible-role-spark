@@ -9,7 +9,8 @@ spark_install_dest: /opt
 spark_create_link: yes
 spark_link_name: spark
 
-spark_config_local_ip: "{{ ansible_eth0.ipv4.address }}"
+spark_internal_iface: eth0
+spark_config_local_ip: "{{ vars['ansible_' + spark_internal_iface].ipv4.address }}"
 spark_config_spark_env_sh:
   - export SPARK_HOME={{ _spark_home }}
   - export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
